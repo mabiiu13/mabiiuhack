@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mabiiu.exe</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00FF00;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        h1 {
+            margin-bottom: 50px;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: black;
+            border: 1px solid #00FF00;
+            color: #00FF00;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        button {
+            width: 320px;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #00FF00;
+            color: black;
+            border: none;
+            cursor: pointer;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        #loading-container {
+            width: 200px;
+            height: 20px;
+            background-color: black;
+            border: 1px solid #00FF00;
+            margin-top: 20px;
+        }
+        #loading {
+            height: 100%;
+            width: 0;
+            background-color: #00FF00;
+            transition: width 5s ease-in-out;
+        }
+        #login-info {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mabiiu.exe</h1>
+    <input type="text" id="url" placeholder="URL do Youtuber" autocomplete="off">
+    <input type="text" id="name" placeholder="Nome do Youtuber" autocomplete="off">
+    <button onclick="startProcess()">Começar</button>
+
+    <div id="loading-container">
+        <div id="loading"></div>
+    </div>
+    <div id="login-info"></div>
+
+    <script>
+        function startProcess() {
+            document.getElementById('loading').style.width = '100%';
+            setTimeout(function() {
+                document.getElementById('login-info').style.display = 'block';
+                const email = generateRandomString(7) + '@gmail.com';
+                const password = generateRandomString(10);
+                document.getElementById('login-info').innerHTML = 'Login: ' + email + '<br>Senha: ' + password;
+            }, 5000);
+        }
+
+        function generateRandomString(length) {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return result;
+        }
+    </script>
+</body>
+</html>
